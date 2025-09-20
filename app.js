@@ -31,11 +31,7 @@ app.use(methodOverride("_method"));
 app.engine("ejs", ejsMate);
 app.use(express.static(path.join(__dirname,"/public")));
 
-app.get("/", (req, res) => {
 
-  
-  res.render("listings/show.ejs",{allListing});
-});
 
 
 
@@ -60,7 +56,7 @@ const validateListing = (req,res,next)=>{
 };
 
 //Index Route
-app.get("/listings",wrapAsync(async (req, res) => {
+app.get("/",wrapAsync(async (req, res) => {
 
 const allListings = await Listing.find({});
   res.render("listings/index.ejs", { allListings });
